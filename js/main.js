@@ -18,7 +18,7 @@ $(document).ready(function() {
     var inputStr = $("#inputStr").val().toLowerCase();
     var hexString;
     if (inputStr === "") {
-      hexString = "000000";
+      hexString = "FFFFFF";
     } else {
       var inputStrArr = inputStr.split("");
       hexString = padToSix(_.map(inputStrArr, function(char) {
