@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <title>string to hex</title>
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="http://underscorejs.org/underscore-min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      var decToHex = function(n) {
+        return parseInt(n, 10).toString(16);
+      }
+
+      var hexToDec = function(n) {
+        return parseInt(parseInt(n, 16).toString(10));
+      }
+
+      var padToSix = function(hexString) {
+        while (hexString.length % 6 !== 0) {
+          hexString += "0";
+        }
+        return hexString;
+      }
+
+      $("#inputStr").keyup(function() {
+        var inputStr = $("#inputStr").val().toLowerCase();
+        var hexString;
+        if (inputStr === "") {
+          hexString = "000000";
+        } else {
+          var inputStrArr = inputStr.split("");
+          hexString = padToSix(_.map(inputStrArr, function(char) {
+            return decToHex(char.charCodeAt());
+          }).join(""));
+
+          while (hexString.length !== 6) {
+            var hexStringArr = hexString.match(/.{2}/g);
+            hexString = padToSix(_.map(hexStringArr, function(doubleChar) {
+              var doubleCharSplit = doubleChar.split("");
+              return decToHex(hexToDec(doubleCharSplit[0]) + hexToDec(doubleCharSplit[1]));
+            }).join(""));
+          }
+        }
+
+        $(".hex").html("#" + hexString);
+        $("body").css("background-color", "#" + hexString);
+      });
+    });
+  </script>
+  <style type="text/css">
+    .inputArea {
+      margin: 30px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 800px;
+    }
+
+    .inputArea input {
+      width: 100%;
+      font-size: 4em;
+      outline: 0;
+    }
+
+    .hex {
+      text-align: center;
+      margin-top: 100px;
+      width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="inputArea">
+    <input type="text" id="inputStr" placeholder="type any text" />
+  </div>
+
+  <div class="hex"></div>
+</body>
+
+</html>
