@@ -1,4 +1,4 @@
-= String to Hex =
+# String to Hex
 
 I saw the website <a href="http://randomstringtocsscolor.com/">randomstringtocsscolor.com</a> and I thought
 that it was pretty neat!
