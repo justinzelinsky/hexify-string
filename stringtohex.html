@@ -1,4 +1,6 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
 
 <head>
   <title>string to hex</title>
@@ -8,18 +10,18 @@
     $(document).ready(function() {
       var decToHex = function(n) {
         return parseInt(n, 10).toString(16);
-      }
+      };
 
       var hexToDec = function(n) {
         return parseInt(n, 16).toString(10);
-      }
+      };
 
       var padToSix = function(hexString) {
         while (hexString.length % 6 !== 0) {
           hexString += "0";
         }
         return hexString;
-      }
+      };
 
       $("#inputStr").keyup(function() {
         var inputStr = $("#inputStr").val().toLowerCase();
