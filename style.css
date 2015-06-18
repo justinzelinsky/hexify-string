@@ -1,0 +1,21 @@
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.centered input {
+  font-family: Helvetica, sans-serif;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  font-size: 5em;
+  padding: 7px;
+  text-align: center;
+}
+.hex {
+  font-family: Helvetica, sans-serif;
+  margin-top: 20px;
+  text-align: center;
+  color: #FFFFFF;
+}
