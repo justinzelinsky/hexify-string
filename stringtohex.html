@@ -6,13 +6,12 @@
   <script src="http://underscorejs.org/underscore-min.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-
       var decToHex = function(n) {
         return parseInt(n, 10).toString(16);
       }
 
       var hexToDec = function(n) {
-        return parseInt(parseInt(n, 16).toString(10));
+        return parseInt(n, 16).toString(10);
       }
 
       var padToSix = function(hexString) {
@@ -37,7 +36,8 @@
             var hexStringArr = hexString.match(/.{2}/g);
             hexString = padToSix(_.map(hexStringArr, function(doubleChar) {
               var doubleCharSplit = doubleChar.split("");
-              return decToHex(hexToDec(doubleCharSplit[0]) + hexToDec(doubleCharSplit[1]));
+              var sum = parseInt(hexToDec(doubleCharSplit[0])) + parseInt(hexToDec(doubleCharSplit[1]));
+              return decToHex(sum);
             }).join(""));
           }
         }
@@ -49,10 +49,10 @@
   </script>
   <style type="text/css">
     .inputArea {
-      margin: 30px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 800px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     .inputArea input {
@@ -63,10 +63,7 @@
 
     .hex {
       text-align: center;
-      margin-top: 100px;
-      width: 200px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-top: 50px;
       color: #FFFFFF;
     }
   </style>
@@ -75,9 +72,8 @@
 <body>
   <div class="inputArea">
     <input type="text" id="inputStr" placeholder="type any text" />
+    <div class="hex"></div>
   </div>
-
-  <div class="hex"></div>
 </body>
 
 </html>
