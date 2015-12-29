@@ -9,33 +9,33 @@ $(document).ready(function() {
 
   var padToSix = function(hexString) {
     while (hexString.length % 6 !== 0) {
-      hexString += "0";
+      hexString += '0';
     }
     return hexString;
   };
 
-  $("#inputStr").keyup(function() {
-    var inputStr = $("#inputStr").val().toLowerCase();
+  $('#inputStr').keyup(function() {
+    var inputStr = $('#inputStr').val().toLowerCase();
     var hexString;
-    if (inputStr === "") {
-      hexString = "FFFFFF";
+    if (inputStr === '') {
+      hexString = 'FFFFFF';
     } else {
-      var inputStrArr = inputStr.split("");
+      var inputStrArr = inputStr.split('');
       hexString = padToSix(_.map(inputStrArr, function(char) {
         return decToHex(char.charCodeAt());
-      }).join(""));
+      }).join(''));
 
       while (hexString.length !== 6) {
         var hexStringArr = hexString.match(/.{2}/g);
         hexString = padToSix(_.map(hexStringArr, function(doubleChar) {
-          var doubleCharSplit = doubleChar.split("");
+          var doubleCharSplit = doubleChar.split('');
           var sum = parseInt(hexToDec(doubleCharSplit[0])) + parseInt(hexToDec(doubleCharSplit[1]));
           return decToHex(sum);
-        }).join(""));
+        }).join(''));
       }
     }
 
-    $(".hex").html("#" + hexString);
-    $("body").css("background-color", "#" + hexString);
+    $('.hex').html('#' + hexString);
+    $('body').css('background-color', '#' + hexString);
   });
 });
