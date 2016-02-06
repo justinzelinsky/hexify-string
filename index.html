@@ -4,15 +4,58 @@
 
 <head>
   <title>string to hex</title>
-  <script src="lib/jquery-min.js"></script>
-  <script src="lib/underscore-min.js"></script>
-  <script src="script.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      var input = $('.centered input');
+      var baseConverter = function(to, from) {
+        return function(i) {
+          return parseInt(i, to).toString(from);
+        }
+      }
+
+      var decToHex = baseConverter(10, 16);
+      var hexToDec = baseConverter(16, 10);
+
+      var padToSix = function(hexString) {
+        while (hexString.length % 6 !== 0) {
+          hexString += '0';
+        }
+        return hexString;
+      };
+
+      input.keyup(function() {
+        var inputStr = input.val().toLowerCase();
+        var hex;
+        if (inputStr === '') {
+          hex = 'FFF';
+        } else {
+          var inputStrArr = inputStr.split('');
+          hex = padToSix($.map(inputStrArr, function(char) {
+            return decToHex(char.charCodeAt());
+          }).join(''));
+
+          while (hex.length !== 6) {
+            var hexStringArr = hex.match(/.{2}/g);
+            hex = padToSix($.map(hexStringArr, function(doubleChar) {
+              var doubleCharSplit = doubleChar.split('');
+              var sum = parseInt(hexToDec(doubleCharSplit[0])) + parseInt(hexToDec(doubleCharSplit[1]));
+              return decToHex(sum);
+            }).join(''));
+          }
+        }
+
+        $('.hex').html('#' + hex);
+        $('body').css('background-color', '#' + hex);
+      });
+    });
+  </script>
   <link href="style.css" rel="stylesheet" />
 </head>
 
 <body>
   <div class="centered">
-    <input type="text" id="inputStr" placeholder="type any text" />
+    <input placeholder="type any text" />
     <div class="hex">#FFFFFF</div>
   </div>
 </body>
