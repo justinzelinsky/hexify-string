@@ -8,9 +8,9 @@
   <script type="text/javascript">
     $(function() {
       var input = $('.centered input');
-      var baseConverter = function(to, from) {
+      var baseConverter = function(from, to) {
         return function(i) {
-          return parseInt(i, to).toString(from);
+          return parseInt(i, from).toString(to);
         }
       }
 
@@ -43,6 +43,7 @@
               return decToHex(sum);
             }).join(''));
           }
+          hex = hex.toUpperCase();
         }
 
         $('.hex').html('#' + hex);
