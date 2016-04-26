@@ -3,62 +3,114 @@
 <html lang="en">
 
 <head>
-  <title>string to hex</title>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-  <script type="text/javascript">
-    $(function() {
-      var input = $('.centered input');
-      var baseConverter = function(from, to) {
-        return function(i) {
-          return parseInt(i, from).toString(to);
+    <title>string to hex</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var input = $('.centered input');
+            var baseConverter = function(from, to) {
+                return function(i) {
+                    return parseInt(i, from).toString(to);
+                }
+            }
+
+            var decToHex = baseConverter(10, 16);
+            var hexToDec = baseConverter(16, 10);
+
+            var padToSix = function(hexString) {
+                while (hexString.length % 6 !== 0) {
+                    hexString += '0';
+                }
+                return hexString;
+            };
+
+            input.keyup(function() {
+                var inputStr = input.val().toLowerCase();
+                var hex;
+                if (inputStr === '') {
+                    hex = 'FFF';
+                } else {
+                    var inputStrArr = inputStr.split('');
+                    hex = padToSix($.map(inputStrArr, function(char) {
+                        return decToHex(char.charCodeAt());
+                    }).join(''));
+
+                    while (hex.length !== 6) {
+                        var hexStringArr = hex.match(/.{2}/g);
+                        hex = padToSix($.map(hexStringArr, function(doubleChar) {
+                            var doubleCharSplit = doubleChar.split('');
+                            var sum = parseInt(hexToDec(doubleCharSplit[0])) + parseInt(hexToDec(doubleCharSplit[1]));
+                            return decToHex(sum);
+                        }).join(''));
+                    }
+                    hex = hex.toUpperCase();
+                }
+
+                $('.hex').html('#' + hex);
+                $('body').css('background-color', '#' + hex);
+            });
+        });
+    </script>
+    <style>
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 200px;
+            padding: 20px;
         }
-      }
 
-      var decToHex = baseConverter(10, 16);
-      var hexToDec = baseConverter(16, 10);
-
-      var padToSix = function(hexString) {
-        while (hexString.length % 6 !== 0) {
-          hexString += '0';
-        }
-        return hexString;
-      };
-
-      input.keyup(function() {
-        var inputStr = input.val().toLowerCase();
-        var hex;
-        if (inputStr === '') {
-          hex = 'FFF';
-        } else {
-          var inputStrArr = inputStr.split('');
-          hex = padToSix($.map(inputStrArr, function(char) {
-            return decToHex(char.charCodeAt());
-          }).join(''));
-
-          while (hex.length !== 6) {
-            var hexStringArr = hex.match(/.{2}/g);
-            hex = padToSix($.map(hexStringArr, function(doubleChar) {
-              var doubleCharSplit = doubleChar.split('');
-              var sum = parseInt(hexToDec(doubleCharSplit[0])) + parseInt(hexToDec(doubleCharSplit[1]));
-              return decToHex(sum);
-            }).join(''));
-          }
-          hex = hex.toUpperCase();
+        .centered input {
+            font-family: Helvetica, sans-serif;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            font-size: 36px;
+            padding: 7px;
+            text-align: center;
+            outline: 0;
+            border: 2px solid #555;
+            color: #333;
+            box-sizing: border-box;
+            width: 100%;
         }
 
-        $('.hex').html('#' + hex);
-        $('body').css('background-color', '#' + hex);
-      });
-    });
-  </script>
-  <link href="style.css" rel="stylesheet" />
+        .centered input:focus {
+            outline-width: 0;
+        }
+
+        .centered input::-webkit-input-placeholder {
+            color: #999;
+        }
+
+        .centered::before {
+            position: absolute;
+            content: '';
+            background-color: #FFF;
+            opacity: .25;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hex {
+            font-family: Helvetica, sans-serif;
+            margin-top: 20px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="centered">
-    <input placeholder="type any text" />
-    <div class="hex">#FFFFFF</div>
-  </div>
+    <div class="centered">
+        <input placeholder="type any text" />
+        <div class="hex">#FFFFFF</div>
+    </div>
 </body>
 
 </html>
