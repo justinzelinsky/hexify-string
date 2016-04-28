@@ -7,43 +7,34 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script type="text/javascript">
         $(function() {
+          'use strict';
+
             var input = $('.centered input');
-            var baseConverter = function(from, to) {
-                return function(i) {
-                    return parseInt(i, from).toString(to);
-                }
-            }
 
-            var decToHex = baseConverter(10, 16);
-            var hexToDec = baseConverter(16, 10);
-
-            var padToSix = function(hexString) {
-                while (hexString.length % 6 !== 0) {
-                    hexString += '0';
+            var pad = function(arr, pad) {
+                while (arr.length % pad !== 0) {
+                    arr.push("0");
                 }
-                return hexString;
+                return arr;
             };
 
             input.keyup(function() {
-                var inputStr = input.val().toLowerCase();
+                var str = input.val();
                 var hex;
-                if (inputStr === '') {
+                if (str === '') {
                     hex = 'FFF';
                 } else {
-                    var inputStrArr = inputStr.split('');
-                    hex = padToSix($.map(inputStrArr, function(char) {
-                        return decToHex(char.charCodeAt());
-                    }).join(''));
+                    hex = pad(str.split('').map(c => {
+                        return c.charCodeAt().toString(16);
+                    }), 6).join('');
 
                     while (hex.length !== 6) {
-                        var hexStringArr = hex.match(/.{2}/g);
-                        hex = padToSix($.map(hexStringArr, function(doubleChar) {
-                            var doubleCharSplit = doubleChar.split('');
-                            var sum = parseInt(hexToDec(doubleCharSplit[0])) + parseInt(hexToDec(doubleCharSplit[1]));
-                            return decToHex(sum);
-                        }).join(''));
+                        hex = pad(hex.match(/.{2}/g).map(a => {
+                            return a.split('').reduce((a, b) => {
+                                return parseInt(a, 16) + parseInt(b, 16);
+                            }).toString(16);
+                        }), 6).join('');
                     }
-                    hex = hex.toUpperCase();
                 }
 
                 $('.hex').html('#' + hex);
@@ -108,7 +99,7 @@
 
 <body>
     <div class="centered">
-        <input placeholder="type any text" />
+        <input placeholder="type any text" autofocus />
         <div class="hex">#FFFFFF</div>
     </div>
 </body>
