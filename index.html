@@ -1,100 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
 <head>
     <title>string to hex</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-          'use strict';
-
-            var input = $('.centered input');
-
-            var pad = function(arr, pad) {
-                while (arr.length % pad !== 0) {
-                    arr.push("0");
-                }
-                return arr;
-            };
-
-            input.keyup(function() {
-                var str = input.val();
-                var hex;
-                if (str === '') {
-                    hex = 'FFF';
-                } else {
-                    hex = pad(str.split('').map(c => {
-                        return c.charCodeAt().toString(16);
-                    }), 6).join('');
-
-                    while (hex.length !== 6) {
-                        hex = pad(hex.match(/.{2}/g).map(a => {
-                            return a.split('').reduce((a, b) => {
-                                return parseInt(a, 16) + parseInt(b, 16);
-                            }).toString(16);
-                        }), 6).join('');
-                    }
-                }
-
-                $('.hex').html('#' + hex);
-                $('body').css('background-color', '#' + hex);
-            });
-        });
-    </script>
-    <style>
-        .centered {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 200px;
-            padding: 20px;
-        }
-
-        .centered input {
-            font-family: Helvetica, sans-serif;
-            border-radius: 10px;
-            -webkit-border-radius: 10px;
-            -moz-border-radius: 10px;
-            font-size: 36px;
-            padding: 7px;
-            text-align: center;
-            outline: 0;
-            border: 2px solid #555;
-            color: #333;
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        .centered input:focus {
-            outline-width: 0;
-        }
-
-        .centered input::-webkit-input-placeholder {
-            color: #999;
-        }
-
-        .centered::before {
-            position: absolute;
-            content: '';
-            background-color: #FFF;
-            opacity: .25;
-            top: -50px;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .hex {
-            font-family: Helvetica, sans-serif;
-            margin-top: 20px;
-            text-align: center;
-            color: #FFFFFF;
-        }
-    </style>
+    <link href="style.css" rel="stylesheet">
+    <script type="text/javascript" src="main.js"></script>
 </head>
 
 <body>
