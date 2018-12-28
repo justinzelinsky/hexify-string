@@ -1,0 +1,29 @@
+{
+  "name": "string-to-hex",
+  "version": "1.0.0",
+  "description": "Convert any string to valid hexidecimal color ",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve .",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinzelinsky/stringtohex.git"
+  },
+  "keywords": [
+    "string",
+    "hex",
+    "convert",
+    "color"
+  ],
+  "author": "Justin Zelinsky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justinzelinsky/stringtohex/issues"
+  },
+  "homepage": "https://github.com/justinzelinsky/stringtohex#readme",
+  "dependencies": {
+    "serve": "^10.1.1"
+  }
+}
