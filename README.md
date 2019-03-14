@@ -1,5 +1,7 @@
 # String to Hex
 
+[![Build Status](https://travis-ci.org/justinzelinsky/stringtohex.svg?branch=master)](https://travis-ci.org/justinzelinsky/stringtohex)
+
 I saw the website <a href="http://randomstringtocsscolor.com/">randomstringtocsscolor.com</a> and I thought
 that it was pretty neat!
 
