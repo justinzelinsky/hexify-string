@@ -2,7 +2,7 @@
   "presets": [
     ["@babel/preset-env", {
       "targets": {
-        "browsers": ["last 2 versions", "safari >= 12", "ie >= 11", "node 10"],
+        "node": "current"
       },
       "useBuiltIns": "usage"
     }],
