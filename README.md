@@ -11,9 +11,9 @@ npm install hexify-string
 ## Usage
 
 ```javascript
-import hexifyString from 'hexify-string';
+const hexifyString = require('hexify-string');
 
-const hex = hexifyString('Hello, World!');
+const hexStr = hexifyString('Hello, World!');
 ```
 
 ## Reason
