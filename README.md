@@ -2,11 +2,27 @@
 
 [![Build Status](https://travis-ci.org/justinzelinsky/stringtohex.svg?branch=master)](https://travis-ci.org/justinzelinsky/stringtohex)
 
+## Install
+
+```
+npm install stringtohex
+```
+
+## Usage
+
+```javascript
+import stringToHex from 'stringToHex';
+
+const hex = stringToHex('Hello, World!');
+```
+
+## Reason
+
 I saw the website <a href="http://randomstringtocsscolor.com/">randomstringtocsscolor.com</a> and I thought
 that it was pretty neat!
 
 However, I noticed a lot of duplicates. (e.g. "he" produces #00ee00 , as does "hel"), so, I decided
-to rewrite it to have less duplicates. Maybe I made it worse. /shrug
+to rewrite it to have less duplicates.
 
 I convert each character of the string into its ASCII code and then convert that to hexadecimal.
 
