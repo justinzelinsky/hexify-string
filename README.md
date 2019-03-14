@@ -1,17 +1,17 @@
-# String to Hex
+# Hexify String
 
 [![Build Status](https://travis-ci.org/justinzelinsky/stringtohex.svg?branch=master)](https://travis-ci.org/justinzelinsky/stringtohex)
 
 ## Install
 
 ```
-npm install stringtohex
+npm install hexify-string
 ```
 
 ## Usage
 
 ```javascript
-import stringToHex from 'stringToHex';
+import stringToHex from 'hexify-string';
 
 const hex = stringToHex('Hello, World!');
 ```

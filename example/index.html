@@ -57,14 +57,14 @@
     }
     </style>
     <script type="module">
-      import stringToHex from '../dist/stringToHex.js';
+      import hexifyString from '../dist/hexifyString.js';
       
       document.addEventListener('DOMContentLoaded', function() {
         const input = document.querySelector('.centered input');
         const hexDiv = document.querySelector('.hex');
         input.addEventListener('keyup', function(event) {
           const { value } = input;
-          const hexValue = `#${stringToHex(value)}`;
+          const hexValue = `#${hexifyString(value)}`;
           hexDiv.innerText = hexValue;
           document.body.style.backgroundColor = hexValue;
         });

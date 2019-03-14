@@ -1,6 +1,6 @@
 'use strict';
 
-export default function stringToHex(str) {
+export default function hexifyString(str) {
   if (!str) {
     return 'FFFFFF';
   }
