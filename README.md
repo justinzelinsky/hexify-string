@@ -1,6 +1,6 @@
 # Hexify String
 
-[![Build Status](https://travis-ci.org/justinzelinsky/stringtohex.svg?branch=master)](https://travis-ci.org/justinzelinsky/stringtohex)
+[![Build Status](https://travis-ci.org/justinzelinsky/hexify-string.svg?branch=master)](https://travis-ci.org/justinzelinsky/hexify-string)
 
 ## Install
 
