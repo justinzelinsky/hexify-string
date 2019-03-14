@@ -1,6 +1,6 @@
 {
   "name": "hexify-string",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "Convert any string to valid hexidecimal color",
   "main": "dist/hexifyString.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/justinzelinsky/stringtohex.git"
+    "url": "https://github.com/justinzelinsky/hexify-string.git"
   },
   "keywords": [
     "string",
@@ -22,17 +22,14 @@
   "author": "Justin Zelinsky",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/justinzelinsky/stringtohex/issues"
+    "url": "https://github.com/justinzelinsky/hexify-string/issues"
   },
-  "homepage": "https://github.com/justinzelinsky/stringtohex#readme",
+  "homepage": "https://github.com/justinzelinsky/hexify-string#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "babel-preset-minify": "^0.5.0",
     "jest": "^24.5.0"
-  },
-  "dependencies": {
-    "@babel/polyfill": "^7.2.5"
   }
 }
