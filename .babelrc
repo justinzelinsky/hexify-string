@@ -6,10 +6,6 @@
       },
       "useBuiltIns": "usage"
     }],
-  ],
-  "env": {
-    "production": {
-      "presets": ["minify"]
-    }
-  }
+    "minify"
+  ]
 }

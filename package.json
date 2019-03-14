@@ -1,11 +1,11 @@
 {
   "name": "hexify-string",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Convert any string to valid hexidecimal color",
   "main": "dist/hexifyString.js",
   "scripts": {
     "build": "babel src -d dist",
-    "prepublish": "NODE_ENV=production npm run build",
+    "prepublish": "npm run build",
     "pretest": "npm run build",
     "test": "jest"
   },
