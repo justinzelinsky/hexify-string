@@ -1,6 +1,6 @@
 'use strict';
 
-export default function hexifyString(str) {
+function hexifyString(str) {
   if (!str) {
     return 'FFFFFF';
   }
@@ -28,3 +28,5 @@ export default function hexifyString(str) {
 
   return hexStr;
 }
+
+module.exports = hexifyString;
