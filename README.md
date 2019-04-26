@@ -14,6 +14,7 @@ npm install hexify-string
 const hexifyString = require('hexify-string');
 
 const hexStr = hexifyString('Hello, World!');
+console.log(hexStr); // 867d11
 ```
 
 ## Reason
@@ -28,5 +29,3 @@ I convert each character of the string into its ASCII code and then convert that
 
 Then I combine those characters into a new string, pad with 0's if necessary, and then I trim the string
 down to length 6 by adding each set of two numbers together and concatinating the new results together.
-
-It's pretty neat.

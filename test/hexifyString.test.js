@@ -18,4 +18,12 @@ describe('hexify a string', () => {
     }
     results.forEach(result => expect(result).toEqual('173360'));
   });
-})
+
+  it('should return white for either an empty string or a nonstring', () => {
+    const emptyStringResult = hexifyString('');
+    expect(emptyStringResult).toEqual('FFFFFF');
+
+    const nonStringResult = hexifyString(true);
+    expect(nonStringResult).toEqual('FFFFFF');
+  });
+});

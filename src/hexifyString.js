@@ -1,7 +1,9 @@
 'use strict';
 
+const pairRegex = /.{2}/g;
+
 function hexifyString(str) {
-  if (!str) {
+  if (!str || typeof str !== 'string') {
     return 'FFFFFF';
   }
 
@@ -12,18 +14,13 @@ function hexifyString(str) {
     .padEnd(6, '0');
 
   while (hexStr.length !== 6) {
-    hexStr = hexStr
-      .match(/.{2}/g)
-      .map(pair => pair
+    hexStr = hexStr.match(pairRegex).map(pair =>
+      pair
         .split('')
-        .reduce((first, second) => 
-          parseInt(first, 16) + parseInt(second, 16)
-        )
+        .reduce((first, second) => parseInt(first, 16) + parseInt(second, 16))
         .toString(16)
-      );
-    hexStr = hexStr
-      .join('')
-      .padEnd(6, '0');
+    );
+    hexStr = hexStr.join('').padEnd(6, '0');
   }
 
   return hexStr;
