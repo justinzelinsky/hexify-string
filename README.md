@@ -28,3 +28,7 @@ I convert each character of the string into its ASCII code and then convert that
 
 Then I combine those characters into a new string, pad with 0's if necessary, and then I trim the string
 down to length 6 by adding each set of two numbers together and concatenating the new results together.
+
+## Thanks
+
+Many thanks to my friend Julian for taking time to review my code and offer advice.
