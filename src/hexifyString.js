@@ -1,29 +1,23 @@
 'use strict';
 
-const pairRegex = /.{2}/g;
-
 function hexifyString(str) {
-  if (!str || typeof str !== 'string') {
-    return 'FFFFFF';
+  if (typeof str !== 'string') return 'ffffff';
+  const toCharCodes = s => s.split('').map(ch => ch.charCodeAt());
+  const toColor = arr =>
+    arr
+      .map(ch => ch.toString(16))
+      .join('')
+      .padEnd(6, '0');
+
+  let s = toCharCodes(str);
+  let result = toColor(s);
+
+  while (result.length > 6) {
+    s = s.map(ascii => ((ascii & 15) + ascii) >>> 4);
+    result = toColor(s);
   }
 
-  let hexStr = str
-    .split('')
-    .map(c => c.charCodeAt().toString(16))
-    .join('')
-    .padEnd(6, '0');
-
-  while (hexStr.length !== 6) {
-    hexStr = hexStr.match(pairRegex).map(pair =>
-      pair
-        .split('')
-        .reduce((first, second) => parseInt(first, 16) + parseInt(second, 16))
-        .toString(16)
-    );
-    hexStr = hexStr.join('').padEnd(6, '0');
-  }
-
-  return hexStr;
+  return result;
 }
 
 module.exports = hexifyString;

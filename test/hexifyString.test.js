@@ -8,7 +8,7 @@ describe('hexify a string', () => {
 
   it('should correctly transform a string into the expected hexadecimal number', () => {
     const result = hexifyString('Hello');
-    expect(result).toEqual('173360');
+    expect(result).toEqual('567770');
   });
 
   it('should return the same result for the same string passed to it', () => {
@@ -16,14 +16,11 @@ describe('hexify a string', () => {
     for (let i = 0; i < 5; i++) {
       results.push(hexifyString('Hello'));
     }
-    results.forEach(result => expect(result).toEqual('173360'));
+    results.forEach(result => expect(result).toEqual('567770'));
   });
 
-  it('should return white for either an empty string or a nonstring', () => {
-    const emptyStringResult = hexifyString('');
-    expect(emptyStringResult).toEqual('FFFFFF');
-
+  it('should return white for a nonstring', () => {
     const nonStringResult = hexifyString(true);
-    expect(nonStringResult).toEqual('FFFFFF');
+    expect(nonStringResult).toEqual('ffffff');
   });
 });
