@@ -1,6 +1,8 @@
 # Hexify String
 
+![npm](https://img.shields.io/npm/v/hexify-string.svg)
 [![Build Status](https://travis-ci.org/justinzelinsky/hexify-string.svg?branch=master)](https://travis-ci.org/justinzelinsky/hexify-string)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 ## Install
 
