@@ -1,23 +1,65 @@
 'use strict';
 
-function hexifyString(str) {
-  if (typeof str !== 'string') return 'ffffff';
-  const toCharCodes = s => s.split('').map(ch => ch.charCodeAt());
-  const toColor = arr =>
-    arr
-      .map(ch => ch.toString(16))
-      .join('')
-      .padEnd(6, '0');
+const hexList = [
+  '0',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f'
+];
 
-  let s = toCharCodes(str);
-  let result = toColor(s);
+const hexDecMap = {
+  '0': 0,
+  '1': 1,
+  '2': 2,
+  '3': 3,
+  '4': 4,
+  '5': 5,
+  '6': 6,
+  '7': 7,
+  '8': 8,
+  '9': 9,
+  a: 10,
+  b: 11,
+  c: 12,
+  d: 13,
+  e: 14,
+  f: 15
+};
 
-  while (result.length > 6) {
-    s = s.map(ascii => ((ascii & 15) + ascii) >>> 4);
-    result = toColor(s);
+function hexify(str) {
+  if (typeof str !== 'string') {
+    return 'ffffff';
   }
 
-  return result;
+  let result = str
+    .split('')
+    .map(char => char.charCodeAt(0).toString(16))
+    .join('');
+
+  while (result.length > 6)
+    result = result
+      .split('')
+      .map((char, i, str) =>
+        i & 1
+          ? ''
+          : hexList[(hexDecMap[char] + hexDecMap[str[i + 1] || '0']) & 15]
+      )
+      .filter(x => x)
+      .join('');
+
+  return result.length < 6 ? result.padEnd(6, '0') : result;
 }
 
-module.exports = hexifyString;
+module.exports = hexify;
