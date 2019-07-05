@@ -15,8 +15,8 @@ npm install hexify-string
 ```javascript
 const hexifyString = require('hexify-string');
 
-const hexStr = hexifyString('Hello, World!');
-console.log(hexStr); // 867d11
+const hexStr = hexifyString('Hello');
+console.log(hexStr); // cb2250
 ```
 
 ## Reason
