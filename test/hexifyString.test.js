@@ -1,4 +1,4 @@
-import hexifyString from '../dist/hexifyString';
+import hexifyString from '../dist/index';
 
 describe('hexify a string', () => {
   it('should correctly transform a string into a six digit hexadecimal number', () => {
