@@ -2,7 +2,7 @@
   "name": "hexify-string",
   "version": "5.0.0",
   "description": "Convert any string to valid hexidecimal color",
-  "main": "dist/hexifyString.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel src -d dist",
     "prepare": "npm run build",
