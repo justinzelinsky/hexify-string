@@ -1,6 +1,7 @@
 # Hexify String
 
 [![npm](https://img.shields.io/npm/v/hexify-string.svg)](https://www.npmjs.com/package/hexify-string)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/hexify-string)](https://bundlephobia.com/result?p=hexify-string)
 [![Build Status](https://travis-ci.org/justinzelinsky/hexify-string.svg?branch=master)](https://travis-ci.org/justinzelinsky/hexify-string)
 [![codecov](https://codecov.io/gh/justinzelinsky/hexify-string/branch/master/graph/badge.svg)](https://codecov.io/gh/justinzelinsky/hexify-string)
 ![npm](https://img.shields.io/npm/dm/hexify-string)
