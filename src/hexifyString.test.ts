@@ -1,4 +1,4 @@
-import hexifyString from '../dist/index';
+import hexifyString from './hexifyString';
 
 describe('hexify a string', () => {
   it('should correctly transform a string into a six digit hexadecimal number', () => {
@@ -17,10 +17,5 @@ describe('hexify a string', () => {
       results.push(hexifyString('Hello'));
     }
     results.forEach(result => expect(result).toEqual('cb2250'));
-  });
-
-  it('should return white for a nonstring', () => {
-    const nonStringResult = hexifyString(true);
-    expect(nonStringResult).toEqual('ffffff');
   });
 });

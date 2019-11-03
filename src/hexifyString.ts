@@ -1,6 +1,4 @@
-'use strict';
-
-const hexList = [
+const hexList: string[] = [
   '0',
   '1',
   '2',
@@ -19,7 +17,9 @@ const hexList = [
   'f'
 ];
 
-const hexDecMap = {
+const hexDecMap: {
+  [key: string]: number;
+} = {
   '0': 0,
   '1': 1,
   '2': 2,
@@ -38,7 +38,7 @@ const hexDecMap = {
   f: 15
 };
 
-function hexify(str) {
+const hexifyString = (str: string): string => {
   if (typeof str !== 'string') {
     return 'ffffff';
   }
@@ -48,7 +48,7 @@ function hexify(str) {
     .map(char => char.charCodeAt(0).toString(16))
     .join('');
 
-  while (result.length > 6)
+  while (result.length > 6) {
     result = result
       .split('')
       .map((char, i, str) =>
@@ -58,8 +58,9 @@ function hexify(str) {
       )
       .filter(x => x)
       .join('');
+  }
 
   return result.length < 6 ? result.padEnd(6, '0') : result;
-}
+};
 
-module.exports = hexify;
+export default hexifyString;
