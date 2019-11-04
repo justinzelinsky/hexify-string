@@ -38,7 +38,7 @@ const hexDecMap: {
   f: 15
 };
 
-const hexifyString = (str: string): string => {
+export const hexifyString = (str: string): string => {
   if (typeof str !== 'string') {
     return 'ffffff';
   }
@@ -62,5 +62,3 @@ const hexifyString = (str: string): string => {
 
   return result.length < 6 ? result.padEnd(6, '0') : result;
 };
-
-export default hexifyString;

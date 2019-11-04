@@ -8,5 +8,5 @@
     "baseUrl": "./src"
   },
   "include": ["src/**/*"],
-  "exclude": ["**/*.test.ts", "lib"]
+  "exclude": ["**.test.js", "lib"]
 }

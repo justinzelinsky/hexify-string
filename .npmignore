@@ -4,3 +4,4 @@ coverage
 .gitignore
 jest.config.js
 tsconfig.json
+**.test.js
