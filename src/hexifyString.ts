@@ -14,7 +14,7 @@ const hexList: string[] = [
   'c',
   'd',
   'e',
-  'f'
+  'f',
 ];
 
 const hexDecMap: {
@@ -35,30 +35,32 @@ const hexDecMap: {
   c: 12,
   d: 13,
   e: 14,
-  f: 15
+  f: 15,
 };
 
-export const hexifyString = (str: string): string => {
+export function hexifyString(str: string): string {
   if (typeof str !== 'string') {
     return 'ffffff';
   }
 
   let result = str
     .split('')
-    .map(char => char.charCodeAt(0).toString(16))
+    .map((char) => char.charCodeAt(0).toString(16))
     .join('');
 
   while (result.length > 6) {
     result = result
       .split('')
-      .map((char, i, str) =>
-        i & 1
-          ? ''
-          : hexList[(hexDecMap[char] + hexDecMap[str[i + 1] || '0']) & 15]
-      )
-      .filter(x => x)
+      .map(function (char, i, str) {
+        if (i & 1) {
+          return '';
+        }
+
+        return hexList[(hexDecMap[char] + hexDecMap[str[i + 1] || '0']) & 15];
+      })
+      .filter((x) => x)
       .join('');
   }
 
   return result.length < 6 ? result.padEnd(6, '0') : result;
-};
+}

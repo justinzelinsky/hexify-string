@@ -1,1 +1,1 @@
-export declare const hexifyString: (str: string) => string;
+export declare function hexifyString(str: string): string;
