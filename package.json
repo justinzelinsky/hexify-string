@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/justinzelinsky/hexify-string#readme",
   "devDependencies": {
-    "jest": "^24.5.0",
-    "typescript": "^3.6.4"
+    "jest": "^24.9.0",
+    "typescript": "^3.8.3"
   }
 }
