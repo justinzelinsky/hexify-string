@@ -1,4 +1,4 @@
-const { hexifyString } = require('../lib/hexifyString.js');
+const { hexifyString } = require('./hexifyString.js');
 
 describe('hexify a string', () => {
   it('should correctly transform a string into a six digit hexadecimal number', () => {
